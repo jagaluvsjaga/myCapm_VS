@@ -86,7 +86,7 @@ context CDSViews {
             Country,
             round(sum(To_Items.GrossAmount),2) as![TotalPurchaseAmount] : Decimal(10,2),
             To_Items.CurrencyCode as![CurrencyCode]
-        } group by ProductId, Country, To_Items.CurrencyCode;
+        } group by ProductId, Description, Country, To_Items.CurrencyCode;
     
 }
 

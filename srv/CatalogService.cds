@@ -69,5 +69,11 @@ service CatalogService @(path: 'CatalogService') {
         };
 
     function largestOrder() returns POs;
-    entity CProductValuesView               as projection on cds.CDSViews.CProductValuesView;
+
+    entity ProductSet                       as
+        projection on db.master.product {
+            *,
+        };
+
+    //entity CProductValuesView               as projection on cds.CDSViews.CProductValuesView;
 }
