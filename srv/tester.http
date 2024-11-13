@@ -1,0 +1,90 @@
+###Service document
+http://localhost:4004/odata/v4/CatalogService
+ 
+###Service metadata document
+http://localhost:4004/odata/v4/CatalogService/$metadata
+ 
+###Get all the employee data
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+ 
+###Get all the employee data - ID, NameFirst, nameLast
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$select=ID,nameFirst,nameLast
+
+###Pagination - load data chunk by chunk
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$top=2&$skip=2
+ 
+###Filtering - search and filter data
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=Currency_code eq 'EUR'
+ 
+###Pattern match search
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=contains(nameFirst,'Chri')
+ 
+###Get Single employee data by Id
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C19B87FB
+ 
+###Count the records
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/$count
+ 
+###Sort data
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$orderby=nameFirst&$top=5
+ 
+###Insert data inside DB - POST operation
+POST http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+Content-Type: application/json
+ 
+{
+      "nameFirst": "Christiano",
+      "nameMiddle": null,
+      "nameLast": "Ronaldo",
+      "nameInitials": null,
+      "sex": "M",
+      "language": "E",
+      "phoneNumber": null,
+      "email": "chris@anubhavtrainings.com",
+      "loginName": "RONALDO",
+      "Currency_code": "USD",
+      "salaryAmount": "1000000",
+      "accountNumber": "3344556677",
+      "bankId": "26005885",
+      "bankName": "My Bank of New York"
+}
+ 
+###Get the data of created employee
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/dec89b00-aefe-4c39-bbcd-e389efa5386c
+ 
+ 
+###Update the data - Patch
+PATCH http://localhost:4004/odata/v4/CatalogService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C19B87FB
+Content-Type: application/json
+ 
+{
+    "salaryAmount": 1000004
+}
+ 
+###Remove data - DELETE
+DELETE http://localhost:4004/odata/v4/CatalogService/EmployeeSet/27ca0948-b264-4401-b94a-4c9e071a63ab
+
+###Get All Po
+http://localhost:4004/odata/v4/CatalogService/POs
+ 
+###Get Single Order by Id
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC32052
+ 
+###Association - get the items correspoding for single order
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC32052/Items
+ 
+###Association - get the header and item data together
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC32052?$expand=Items
+ 
+###Get data from cds view entity
+http://localhost:4004/odata/v4/CatalogService/CProductValuesView
+
+###Calling boost action
+POST http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC32052/boost
+Content-Type: application/json
+
+###Get the largest order
+http://localhost:4004/odata/v4/CatalogService/largestOrder()
+
+###Get EmployeeSrv
+http://localhost:4004/odata/v4/MyService/EmployeeSrv
